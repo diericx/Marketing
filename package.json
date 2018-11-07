@@ -1,0 +1,23 @@
+{
+  "name": "with-redux",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "firebase": "^5.5.7",
+    "next": "latest",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.1",
+    "react-redux-firebase": "^2.1.9",
+    "redux": "^3.6.0",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-firestore": "^0.5.8",
+    "redux-thunk": "^2.1.0"
+  },
+  "license": "ISC"
+}
