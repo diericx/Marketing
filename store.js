@@ -21,7 +21,7 @@ const firebaseConfig = {
 // react-redux-firebase config
 const rrfConfig = {
   userProfile: 'users',
-  useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
+  useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
 }
 
 // Check to make sure firebase isn't already initialized
@@ -29,7 +29,10 @@ if (!firebase.apps.length) {
   // Initialize firebase instance
   firebase.initializeApp(firebaseConfig);
   // Initialize Cloud Firestore through Firebase
-  firebase.firestore();
+  const firestore = firebase.firestore();
+  firestore.settings({
+    timestampsInSnapshots: true
+  })
 }
 
 // Initialize other services on firebase instance

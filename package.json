@@ -7,11 +7,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^3.4.0",
+    "@material-ui/icons": "^3.0.1",
     "dotenv": "^6.1.0",
     "firebase": "^5.5.7",
+    "jss": "^9.8.7",
     "next": "latest",
+    "prop-types": "^15.6.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-jss": "^8.6.1",
     "react-redux": "^5.0.1",
     "react-redux-firebase": "^2.1.9",
     "redux": "^3.6.0",

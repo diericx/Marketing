@@ -2,9 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { compose } from 'redux'
 import { firestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase'
+import Button from '@material-ui/core/Button';
 
-import {startClock, serverRenderClock} from '../store'
-import Examples from '../components/examples'
+import withHeader from '../lib/withHeader'
 
 class Index extends React.Component {
   // static getInitialProps ({ reduxStore, req }) {
@@ -30,6 +30,10 @@ class Index extends React.Component {
           </div>
           )
         ): 'DNE'} 
+
+        <Button variant="contained" color="secondary" onClick={this.handleClick}>
+          Super Secret Password
+        </Button>
       </div>
     )
   }
@@ -39,5 +43,6 @@ export default compose(
   firestoreConnect(['chocolates']),
   connect(({ firestore: { ordered } }, props) => ({
     chocolates: ordered.chocolates
-  }))
+  })),
+  withHeader
 )(Index)
