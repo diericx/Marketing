@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 import {connect} from 'react-redux'
 import { compose } from 'redux'
-import { firestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase'
+import { firestoreConnect, isLoaded, isEmpty, withFirebase } from 'react-redux-firebase'
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -28,8 +29,30 @@ const styles = theme => ({
 
 class Login extends React.Component {
 
-  login() {
-    console.log("LOGGIN GIN", this.state)
+  state = {
+    email: null,
+    password: null
+  }
+
+  login = async () => {
+    const { firebase } = this.props;
+    const { email, password } = this.state;
+
+    try {
+      // Attempt to login
+      const result = await firebase.login({
+        email, 
+        password
+      })
+
+      // Succesful login
+      Router.push('/');
+      
+    } catch (error) {
+      console.log('ERROR with signing: ', error)
+    }
+    
+    
   }
 
   handleChange = name => event => {
@@ -75,7 +98,7 @@ Login.propTypes = {
 };
 
 export default compose(
-  firestoreConnect(['chocolates']),
+  withFirebase,
   connect(({ firestore: { ordered } }, props) => ({
     chocolates: ordered.chocolates
   })),

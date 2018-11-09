@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
+
 import Link from 'next/link';
+import Router from 'next/router';
 
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -16,6 +18,8 @@ import Button from '@material-ui/core/Button';
 import { compose } from 'redux';
 import { withFirebase } from 'react-redux-firebase';
 
+import withAuthStateListener from '../lib/withAuthStateListener';
+
 const styles = {
   grow: {
     flexGrow: 1,
@@ -24,6 +28,10 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+  logo: {
+    cursor: 'pointer',
+    width: 100
+  }
 };
 
 
@@ -31,6 +39,7 @@ class Header extends React.Component {
   state = {
     auth: true,
     anchorEl: null,
+    user: null
   };
 
   renderAuthButtons = () => {
@@ -48,10 +57,6 @@ class Header extends React.Component {
         </div>
       )
     }
-
-    // If the user IS signed in
-
-    
   }
 
   handleMenu = event => {
@@ -61,6 +66,11 @@ class Header extends React.Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+
+  handleLogout = () => {
+    const { firebase } = this.props;
+    firebase.auth().signOut()
+  }
 
   render() {
     const { classes, firebase, profile } = this.props;
@@ -76,11 +86,18 @@ class Header extends React.Component {
             </IconButton>
 
             
-              <Typography variant="h6" color="inherit" className={classes.grow}>
-              <Link href="/">
-                Contmar
-                </Link>
+              <Typography onClick={() => Router.push('/')} variant="h6" color="inherit" className={classes.grow}>
+                {/* <Link href="/"> */}
+                  <div className={classes.logo}>
+                    Contmar
+                  </div>
+                  
+                {/* </Link> */}
               </Typography>
+
+              <Link href="/dashboard">
+                <Button color="inherit">My Dashboard</Button>
+              </Link>
             
 
             {this.renderAuthButtons()}
@@ -111,6 +128,7 @@ class Header extends React.Component {
                   >
                     <MenuItem onClick={this.handleClose}>Profile</MenuItem>
                     <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                    <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
                   </Menu>
                 </div>
               )}
@@ -128,6 +146,7 @@ Header.propTypes = {
 
 export default compose(
   withFirebase,
+  withAuthStateListener,
   connect(({firebase: {profile}}) => ({
     profile
   })),
