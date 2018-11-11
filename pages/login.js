@@ -9,18 +9,19 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 import withHeader from '../lib/withHeader'
 
 const styles = theme => ({
   root: {
+    paddingTop: 50,
     flexGrow: 1
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: '200px',
+    width: '100%',
   },
   submitButton: {
     width: '200px'
@@ -65,27 +66,47 @@ class Login extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-      <Grid container direction="column" align="center" spacing={16}>
-        <TextField
-          id="standard-name"
-          label="Email"
-          className={classes.textField}
-          onChange={this.handleChange('email')}
-          margin="normal"
-        />
+      <Grid container direction="row" align="center" spacing={16}>
 
-        <TextField
-          id="standard-name"
-          label="Password"
-          className={classes.textField}
-          onChange={this.handleChange('password')}
-          margin="normal"
-          type="password"
-        />
+        <Grid item align="center" xs={12}>
+          <Typography className={classes.title} variant="h5"> LOGIN </Typography>
+          <Grid item align="center" xs={6}>
+            <hr />
+          </Grid>
+        </Grid>
 
-        <Button variant="outlined" color="primary" className={classes.submitButton} onClick={() => this.login()}>
-          Login
-        </Button>
+        <Grid item align="center" xs={12} sm={3} md={4}></Grid>
+          <Grid item align="center" xs={12} sm={6} md={4}>
+            <TextField
+              id="standard-name"
+              label="Email"
+              className={classes.textField}
+              onChange={this.handleChange('email')}
+              margin="normal"
+            />
+          </Grid>
+        <Grid item align="center" xs={12} sm={3} md={4}></Grid>
+
+        <Grid item align="center" xs={12} sm={3} md={4}></Grid>
+          <Grid item align="center" xs={12} sm={6} md={4}>
+            <TextField
+              id="standard-name"
+              label="Password"
+              className={classes.textField}
+              onChange={this.handleChange('password')}
+              margin="normal"
+              type="password"
+            />
+          </Grid>
+        <Grid item align="center" xs={12} sm={3} md={4}></Grid>
+
+        <Grid item align="center" xs={12} sm={3} md={4}></Grid>
+        <Grid item align="center" xs={0} sm={3} md={4}>
+          <Button variant="outlined" color="primary" className={classes.submitButton} onClick={() => this.login()}>
+            Login
+          </Button>
+        </Grid>
+        
 
       </Grid>
       </div>
@@ -99,9 +120,6 @@ Login.propTypes = {
 
 export default compose(
   withFirebase,
-  connect(({ firestore: { ordered } }, props) => ({
-    chocolates: ordered.chocolates
-  })),
   withStyles(styles),
   withHeader
 )(Login)
