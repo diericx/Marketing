@@ -13,6 +13,7 @@ import withHeader from '../lib/withHeader'
 
 const styles = theme => ({
   root: {
+    paddingTop: 50,
     flexGrow: 1,
   },
   paper: {
@@ -21,9 +22,14 @@ const styles = theme => ({
     color: 'black',
     height: 300
   },
-  snapchat: {
-    backgroundColor: '#FFFC00'
+  titleItem: {
+    textAlign: 'center',
   },
+  title: {
+    lineHeight: '90px',
+    color: '#55555'
+  },
+
 });
 
 class Index extends React.Component {
@@ -33,23 +39,23 @@ class Index extends React.Component {
 
     return (
       <div className={classes.root}>
-      <Grid container spacing={16}>
-      
-        <Grid item className={classes.demo} justify="center" xs={4}>
-          
-        </Grid>
+        <Grid container spacing={16}>
 
-      </Grid>
+          <Grid item className={classes.titleItem} xs={12}>
+            <Typography variant="h3" className={classes.title}>
+              Stop Being Invisible.
+              <br/>Stop advertising.
+              <br/>Start innovating.
+            </Typography>
+          </Grid>
+        
+        </Grid>
       </div>
     )
   }
 }
 
 export default compose(
-  firestoreConnect(['chocolates']),
-  connect(({ firestore: { ordered } }, props) => ({
-    chocolates: ordered.chocolates
-  })),
   withStyles(styles),
   withHeader
 )(Index)

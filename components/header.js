@@ -85,7 +85,7 @@ class Header extends React.Component {
               <Typography onClick={() => Router.push('/')} variant="h6" color="inherit" className={classes.grow}>
                 {/* <Link href="/"> */}
                   <div className={classes.logo}>
-                    Contmar
+                    AdSocial
                   </div>
                   
                 {/* </Link> */}
