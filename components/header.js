@@ -81,7 +81,6 @@ class Header extends React.Component {
         <AppBar position="static">
           <Toolbar>
 
-            
               <Typography onClick={() => Router.push('/')} variant="h6" color="inherit" className={classes.grow}>
                 {/* <Link href="/"> */}
                   <div className={classes.logo}>

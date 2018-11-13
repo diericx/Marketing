@@ -20,24 +20,12 @@ const styles = theme => ({
   },
 });
 
-const options = [
-  'Awareness', 
-  'App Installs', 
-  'Drive Traffic to Website', 
-  'Drive Traffic to App', 
-  'Engagement',
-  'Video Views',
-  'Lead Gen',
-  'Website Conversions',
-  'Catalog Sales'
-]
-
-function GoalPicker(props) {
+function RadioPicker(props) {
   const {value, classes} = props;
 
   return (
     <FormControl component="fieldset" className={classes.formControl}>
-      <FormLabel component="legend">Goal</FormLabel>
+      <FormLabel component="legend">{props.label}</FormLabel>
       <RadioGroup
         aria-label="Goal"
         name="goal"
@@ -45,7 +33,7 @@ function GoalPicker(props) {
         value={value}
         onChange={props.handleChange}
       >
-        {options.map(option => (
+        {props.options.map(option => (
           <FormControlLabel value={option} control={<Radio />} label={option} />
         ))}
       </RadioGroup>
@@ -53,8 +41,8 @@ function GoalPicker(props) {
   )
 }
 
-GoalPicker.propTypes = {
+RadioPicker.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(GoalPicker);
+export default withStyles(styles)(RadioPicker);
