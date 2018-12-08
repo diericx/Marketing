@@ -10,18 +10,18 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 const styles = theme => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   formControl: {
-    margin: theme.spacing.unit * 3,
+    margin: theme.spacing.unit * 3
   },
   group: {
-    margin: `${theme.spacing.unit}px 0`,
-  },
+    margin: `${theme.spacing.unit}px 0`
+  }
 });
 
 function RadioPicker(props) {
-  const {value, classes} = props;
+  const { value, classes } = props;
 
   return (
     <FormControl component="fieldset" className={classes.formControl}>
@@ -34,15 +34,20 @@ function RadioPicker(props) {
         onChange={props.handleChange}
       >
         {props.options.map(option => (
-          <FormControlLabel value={option} control={<Radio />} label={option} />
+          <FormControlLabel
+            value={option.title}
+            disabled={option.disabled || false}
+            control={<Radio />}
+            label={option.title}
+          />
         ))}
       </RadioGroup>
     </FormControl>
-  )
+  );
 }
 
 RadioPicker.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(RadioPicker);

@@ -8,7 +8,7 @@ import { withHandlers } from 'recompose';
 import { firestoreConnect, isLoaded } from 'react-redux-firebase';
 import { withStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import SnapchatCampaignForm from './campaignForm/snapchatCampaignForm';
+import SnapchatCampaignForm from './campaignForms/snapchat';
 
 const styles = theme => ({
   root: {
