@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -17,7 +18,17 @@ const styles = theme => ({
   table: {
     minWidth: 700,
   },
+  tableRow: {
+    "&:hover": {
+      backgroundColor: "lightgray !important",
+      cursor: 'pointer'
+    }
+  }
 });
+
+function CampaignOnClick(campaignId) {
+  Router.push(`/campaign?id=${campaignId}`, `campaign/campaignId` )
+}
 
 function Campaigns(props) {
   const { classes, data } = props;
@@ -37,7 +48,11 @@ function Campaigns(props) {
         <TableBody>
           {data.map(row => {
             return (
-              <TableRow key={row.id}>
+              <TableRow 
+                key={row.id} 
+                className={classes.tableRow}
+                onClick={() => CampaignOnClick(row.id)}
+              >
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>

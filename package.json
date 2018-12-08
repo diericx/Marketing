@@ -2,9 +2,9 @@
   "name": "with-redux",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@material-ui/core": "^3.4.0",
@@ -14,8 +14,8 @@
     "jss": "^9.8.7",
     "next": "latest",
     "prop-types": "^15.6.2",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-jss": "^8.6.1",
     "react-redux": "^5.0.1",
     "react-redux-firebase": "^2.1.9",
