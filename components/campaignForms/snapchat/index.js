@@ -100,7 +100,7 @@ class Snapchat extends React.Component {
             />
             <Audience
               {...{
-                title: 'Demographics',
+                title: 'Audience',
                 campaign,
                 updateCampaign,
                 updateCampaignFromFieldChange: this.updateCampaignFromFieldChange

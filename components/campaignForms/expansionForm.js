@@ -15,6 +15,9 @@ const styles = theme => ({
   root: {
     display: 'flex'
   },
+  heading: {
+    color: 'white'
+  },
   summary: {
     backgroundColor: 'red'
   },
