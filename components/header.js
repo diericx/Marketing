@@ -35,9 +35,7 @@ const styles = {
 
 class Header extends React.Component {
   state = {
-    auth: true,
-    anchorEl: null,
-    user: null
+    anchorEl: null
   };
 
   renderAuthButtons = () => {
@@ -55,6 +53,8 @@ class Header extends React.Component {
         </div>
       );
     }
+
+    return null;
   };
 
   handleMenu = event => {
@@ -71,7 +71,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes, firebase, profile } = this.props;
+    const { classes, firebase } = this.props;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 

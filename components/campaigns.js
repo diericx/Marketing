@@ -33,7 +33,7 @@ function CampaignOnClick(campaignId) {
 function Campaigns(props) {
   const { classes, data } = props;
 
-  if (data.length == 0) {
+  if (data.length === 0) {
     return <p>You have no campaigns!</p>;
   }
   return (
@@ -46,20 +46,18 @@ function Campaigns(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map(row => {
-            return (
-              <TableRow
-                key={row.id}
-                className={classes.tableRow}
-                onClick={() => CampaignOnClick(row.id)}
-              >
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell numeric>{row.platform}</TableCell>
-              </TableRow>
-            );
-          })}
+          {data.map(row => (
+            <TableRow
+              key={row.id}
+              className={classes.tableRow}
+              onClick={() => CampaignOnClick(row.id)}
+            >
+              <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell>
+              <TableCell numeric>{row.platform}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </Paper>
