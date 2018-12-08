@@ -21,7 +21,7 @@ const styles = theme => ({
     flexGrow: 1
   },
   nameTextField: {
-    fontSize: 50
+    fontSize: 40
   },
   submitButton: {
     width: '200px'
