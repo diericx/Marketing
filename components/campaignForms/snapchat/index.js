@@ -8,26 +8,12 @@ import { firestoreConnect, isLoaded, isEmpty, withFirebase } from 'react-redux-f
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import { Paper } from '@material-ui/core';
-import InputAdornment from '@material-ui/core/InputAdornment';
 
 import ExpansionForm from '../expansionForm';
-import RadioPicker from '../radioPicker';
-import LocationPicker from '../locationPicker';
 import Setup from './setup';
-import withHeader from '../../../lib/withHeader';
+import Demographics from './demographics';
+import Audience from './audience';
 
 const styles = theme => ({
   root: {
@@ -98,6 +84,23 @@ class Snapchat extends React.Component {
             {/* TODO - Move this to an indipendent component */}
             <Setup
               {...{
+                title: 'Setup',
+                campaign,
+                updateCampaign,
+                updateCampaignFromFieldChange: this.updateCampaignFromFieldChange
+              }}
+            />
+            <Demographics
+              {...{
+                title: 'Demographics',
+                campaign,
+                updateCampaign,
+                updateCampaignFromFieldChange: this.updateCampaignFromFieldChange
+              }}
+            />
+            <Audience
+              {...{
+                title: 'Demographics',
                 campaign,
                 updateCampaign,
                 updateCampaignFromFieldChange: this.updateCampaignFromFieldChange

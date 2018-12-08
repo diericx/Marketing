@@ -79,7 +79,9 @@ class ExpansionForm extends React.Component {
         className={completionStatus[index] ? classes.greenGradient : classes.redGradient}
       >
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} root={classes.summary}>
-          <Typography className={classes.heading}>Setup</Typography>
+          <Typography className={classes.heading}>
+            {child.props.title || '[Default Title]'}
+          </Typography>
           <Typography className={classes.secondaryHeading}>
             {completionStatus[index] ? (
               <CheckCircleOutline className={classes.green} />

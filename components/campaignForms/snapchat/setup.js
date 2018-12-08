@@ -88,9 +88,9 @@ class Setup extends React.Component {
       !headline ||
       headline === '' ||
       !dailySpendCap ||
-      dailySpendCap === 0 ||
+      dailySpendCap === '0' ||
       !lifetimeSpendCap ||
-      lifetimeSpendCap === 0 ||
+      lifetimeSpendCap === '0' ||
       !goal ||
       goal === '' ||
       !adType ||
