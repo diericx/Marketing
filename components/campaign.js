@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withRouter} from 'next/router'
+import { withRouter } from 'next/router';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -14,28 +14,26 @@ const styles = theme => ({
   root: {
     width: '100%',
     marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
-  },
+    overflowX: 'auto'
+  }
 });
-
 
 function Campaign(props) {
   const { classes, router } = props;
 
   return (
     <div className={classes.root}>
-      CAMPAIGN: 
+      CAMPAIGN:
       <h1>{router.query.id}</h1>
     </div>
   );
-
 }
 
 Campaign.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default compose(
   withStyles(styles),
-  withRouter,
+  withRouter
 )(Campaign);

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import Link from 'next/link';
 import Router from 'next/router';
@@ -21,18 +21,17 @@ import withAuthStateListener from '../lib/withAuthStateListener';
 
 const styles = {
   grow: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20,
+    marginRight: 20
   },
   logo: {
     cursor: 'pointer',
     width: 100
   }
 };
-
 
 class Header extends React.Component {
   state = {
@@ -54,9 +53,9 @@ class Header extends React.Component {
             <Button color="inherit">Sign Up</Button>
           </Link>
         </div>
-      )
+      );
     }
-  }
+  };
 
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -68,8 +67,8 @@ class Header extends React.Component {
 
   handleLogout = () => {
     const { firebase } = this.props;
-    firebase.auth().signOut()
-  }
+    firebase.auth().signOut();
+  };
 
   render() {
     const { classes, firebase, profile } = this.props;
@@ -80,69 +79,68 @@ class Header extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
+            <Typography
+              onClick={() => Router.push('/')}
+              variant="h6"
+              color="inherit"
+              className={classes.grow}
+            >
+              {/* <Link href="/"> */}
+              <div className={classes.logo}>AdSocial</div>
 
-              <Typography onClick={() => Router.push('/')} variant="h6" color="inherit" className={classes.grow}>
-                {/* <Link href="/"> */}
-                  <div className={classes.logo}>
-                    AdSocial
-                  </div>
-                  
-                {/* </Link> */}
-              </Typography>
+              {/* </Link> */}
+            </Typography>
 
-              <Link href="/dashboard">
-                <Button color="inherit">My Dashboard</Button>
-              </Link>
-            
+            <Link href="/dashboard">
+              <Button color="inherit">My Dashboard</Button>
+            </Link>
 
             {this.renderAuthButtons()}
             {firebase && firebase.auth().currentUser && (
-                <div>
-
-                  <IconButton
-                    aria-owns={open ? 'menu-appbar' : undefined}
-                    aria-haspopup="true"
-                    onClick={this.handleMenu}
-                    color="inherit"
-                  >
-                    <AccountCircle />
-                  </IconButton>
-                  <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    open={open}
-                    onClose={this.handleClose}
-                  >
-                    <MenuItem onClick={() => Router.push('/account')}>My account</MenuItem>
-                    <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
-                  </Menu>
-                </div>
-              )}
+              <div>
+                <IconButton
+                  aria-owns={open ? 'menu-appbar' : undefined}
+                  aria-haspopup="true"
+                  onClick={this.handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  open={open}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem onClick={() => Router.push('/account')}>My account</MenuItem>
+                  <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
+                </Menu>
+              </div>
+            )}
           </Toolbar>
         </AppBar>
       </div>
-    )
+    );
   }
-  
 }
 
 Header.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default compose(
   withFirebase,
   withAuthStateListener,
-  connect(({firebase: {profile}}) => ({
+  connect(({ firebase: { profile } }) => ({
     profile
   })),
   withStyles(styles)
-)(Header)
+)(Header);

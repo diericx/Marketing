@@ -13,28 +13,28 @@ const styles = theme => ({
   root: {
     width: '100%',
     marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
+    overflowX: 'auto'
   },
   table: {
-    minWidth: 700,
+    minWidth: 700
   },
   tableRow: {
-    "&:hover": {
-      backgroundColor: "lightgray !important",
+    '&:hover': {
+      backgroundColor: 'lightgray !important',
       cursor: 'pointer'
     }
   }
 });
 
 function CampaignOnClick(campaignId) {
-  Router.push(`/campaign?id=${campaignId}`, `campaign/campaignId` )
+  Router.push(`/campaign?id=${campaignId}`, `campaign/${campaignId}`);
 }
 
 function Campaigns(props) {
   const { classes, data } = props;
 
   if (data.length == 0) {
-    return (<p>You have no campaigns!</p>)
+    return <p>You have no campaigns!</p>;
   }
   return (
     <Paper className={classes.root}>
@@ -48,8 +48,8 @@ function Campaigns(props) {
         <TableBody>
           {data.map(row => {
             return (
-              <TableRow 
-                key={row.id} 
+              <TableRow
+                key={row.id}
                 className={classes.tableRow}
                 onClick={() => CampaignOnClick(row.id)}
               >
@@ -64,11 +64,10 @@ function Campaigns(props) {
       </Table>
     </Paper>
   );
-
 }
 
 Campaigns.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Campaigns);
