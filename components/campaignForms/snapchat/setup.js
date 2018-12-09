@@ -83,7 +83,7 @@ class Setup extends React.Component {
   isComplete() {
     const { campaign } = this.props;
     const { headline, dailySpendCap, lifetimeSpendCap, goal, adType } = campaign;
-    console.log(headline);
+
     if (
       !headline ||
       headline === '' ||

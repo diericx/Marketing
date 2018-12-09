@@ -62,14 +62,12 @@ class ExpansionForm extends React.Component {
   updateCompletionStatus = index => status => {
     // Don't update state if the incomming status is the same
     if (this.state.completionStatus[index] === status) {
-      console.log(status, '==', this.state.completionStatus[index]);
       return;
     }
     // If the incomming status is differemt, update
     const { state } = this;
     state.completionStatus[index] = status;
     this.setState(state);
-    console.log(this.state);
   };
 
   render() {

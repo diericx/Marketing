@@ -78,7 +78,7 @@ class Demographics extends React.Component {
           </Grid>
         </Grid>
         <RadioPicker
-          label="Goal"
+          label="Gender"
           options={genderOptions}
           value={campaign.gender}
           handleChange={updateCampaignFromFieldChange('gender')}

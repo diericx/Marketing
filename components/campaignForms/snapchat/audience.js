@@ -10,7 +10,7 @@ const styles = theme => ({
     display: 'flex'
   },
   multilineTextField: {
-    width: 300
+    width: 400
   }
 });
 
@@ -34,7 +34,7 @@ class Audience extends React.Component {
 
   isComplete() {
     const { campaign } = this.props;
-    return !campaign.demographic || campaign.demographic === '';
+    return campaign.audience && campaign.audience !== '';
   }
 
   render() {
@@ -45,11 +45,11 @@ class Audience extends React.Component {
           <Grid item xs={12}>
             <TextField
               id="standard-multiline-flexible"
-              label="Describe Your Demographic"
+              label="Describe your audience in as much detail as you can"
               multiline
               rowsMax="4"
-              value={campaign.demographic}
-              onChange={updateCampaignFromFieldChange('demographic')}
+              value={campaign.audience}
+              onChange={updateCampaignFromFieldChange('audience')}
               className={classes.multilineTextField}
               margin="normal"
             />

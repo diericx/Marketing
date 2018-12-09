@@ -7,21 +7,17 @@ import { firestoreConnect, isLoaded, isEmpty, withFirebase } from 'react-redux-f
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
 
 import ExpansionForm from '../expansionForm';
 import Setup from './setup';
 import Demographics from './demographics';
 import Audience from './audience';
+import Platforms from './platforms';
 
 const styles = theme => ({
   root: {
     padding: 50,
     flexGrow: 1
-  },
-  nameTextField: {
-    fontSize: 40
   },
   submitButton: {
     width: '200px'
@@ -38,13 +34,6 @@ class Snapchat extends React.Component {
     locations: []
   };
 
-  updateCampaignFromFieldChange = name => event => {
-    const { updateCampaign } = this.props;
-    updateCampaign({
-      [name]: event.target.value
-    });
-  };
-
   deleteLocation = index => {
     const { locations } = this.state;
     locations.splice(index, 1);
@@ -58,36 +47,27 @@ class Snapchat extends React.Component {
   };
 
   render() {
-    const { classes, campaign, updateCampaign } = this.props;
+    const { classes, campaign, updateCampaign, updateCampaignFromFieldChange } = this.props;
 
     return (
       <div className={classes.root}>
         <Grid container direction="column" spacing={16}>
-          <Typography variant="h4">
-            <TextField
-              id="standard-name"
-              label="Campaign Name"
-              // className={classes.nameTextField}
-              value={campaign.name}
-              onChange={this.updateCampaignFromFieldChange('name')}
-              InputProps={{
-                classes: {
-                  input: classes.nameTextField
-                }
-              }}
-              inputProps={{ maxLength: 34 }}
-              margin="normal"
-            />
-          </Typography>
-
           <ExpansionForm>
             {/* TODO - Move this to an indipendent component */}
+            <Platforms
+              {...{
+                title: 'Platforms',
+                campaign,
+                updateCampaign,
+                updateCampaignFromFieldChange
+              }}
+            />
             <Setup
               {...{
                 title: 'Setup',
                 campaign,
                 updateCampaign,
-                updateCampaignFromFieldChange: this.updateCampaignFromFieldChange
+                updateCampaignFromFieldChange
               }}
             />
             <Demographics
@@ -95,7 +75,7 @@ class Snapchat extends React.Component {
                 title: 'Demographics',
                 campaign,
                 updateCampaign,
-                updateCampaignFromFieldChange: this.updateCampaignFromFieldChange
+                updateCampaignFromFieldChange
               }}
             />
             <Audience
@@ -103,7 +83,7 @@ class Snapchat extends React.Component {
                 title: 'Audience',
                 campaign,
                 updateCampaign,
-                updateCampaignFromFieldChange: this.updateCampaignFromFieldChange
+                updateCampaignFromFieldChange
               }}
             />
           </ExpansionForm>
