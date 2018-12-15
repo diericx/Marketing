@@ -16,6 +16,7 @@ const styles = theme => ({
     display: 'flex'
   },
   heading: {
+    width: '100%',
     color: 'white'
   },
   summary: {
@@ -71,7 +72,7 @@ class ExpansionForm extends React.Component {
   };
 
   render() {
-    const { children, classes } = this.props;
+    const { children, classes, passdownProps } = this.props;
     const { completionStatus } = this.state;
 
     const expansionPanels = React.Children.map(children, (child, index) => (
@@ -93,7 +94,8 @@ class ExpansionForm extends React.Component {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
           {React.cloneElement(child, {
-            updateCompletionStatus: this.updateCompletionStatus(index)
+            updateCompletionStatus: this.updateCompletionStatus(index),
+            ...passdownProps
           })}
         </ExpansionPanelDetails>
       </ExpansionPanel>

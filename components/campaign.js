@@ -11,7 +11,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
-import SnapchatCampaignForm from './campaignForms/snapchat';
+import CampaignForm from './campaignForm';
 
 const styles = theme => ({
   root: {
@@ -62,7 +62,7 @@ function Campaign(props) {
         />
       </Typography>
 
-      <SnapchatCampaignForm {...{ campaign, updateCampaign, updateCampaignFromFieldChange }} />
+      <CampaignForm {...{ campaign, updateCampaign, updateCampaignFromFieldChange }} />
     </div>
   );
 }

@@ -52,40 +52,18 @@ class Snapchat extends React.Component {
     return (
       <div className={classes.root}>
         <Grid container direction="column" spacing={16}>
-          <ExpansionForm>
-            {/* TODO - Move this to an indipendent component */}
-            <Platforms
-              {...{
-                title: 'Platforms',
-                campaign,
-                updateCampaign,
-                updateCampaignFromFieldChange
-              }}
-            />
-            <Setup
-              {...{
-                title: 'Setup',
-                campaign,
-                updateCampaign,
-                updateCampaignFromFieldChange
-              }}
-            />
-            <Demographics
-              {...{
-                title: 'Demographics',
-                campaign,
-                updateCampaign,
-                updateCampaignFromFieldChange
-              }}
-            />
-            <Audience
-              {...{
-                title: 'Audience',
-                campaign,
-                updateCampaign,
-                updateCampaignFromFieldChange
-              }}
-            />
+          <ExpansionForm
+            passdownProps={{
+              title: 'Platforms',
+              campaign,
+              updateCampaign,
+              updateCampaignFromFieldChange
+            }}
+          >
+            <Platforms title="1. Platforms" />
+            <Setup title="2. Setup" />
+            <Demographics title="3. Demographics" />
+            <Audience title="4. Audience" />
           </ExpansionForm>
         </Grid>
       </div>
